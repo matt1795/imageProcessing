@@ -7,7 +7,7 @@ FLAGS= -output-directory build -jobname $(NAME) -file-line-error
 all: clean output
 
 clean:
-	rm ../../output/$(NAME).pdf
+	-rm ../../output/$(NAME).pdf
 
 output: doc
 	mv build/$(NAME).pdf ../../output/

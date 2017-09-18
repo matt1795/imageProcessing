@@ -10,24 +10,24 @@
 \usepackage{listings}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{lastpage}
+\usepackage{float}
 
 \graphicspath{ {images/}{../} }
 
 % Header styling
 \fancypagestyle{titlePage}{ 
     \fancyhf{}
-    \fancyfoot[L]{Capstone\_7790\_01\_ANR\_template\_201630.docx} 
-    \fancyfoot[R]{\today}
     \renewcommand{\headrulewidth}{0pt} 
+    \renewcommand{\footrulewidth}{0pt} 
 }
 
 \fancypagestyle{neilReport}{ 
     \fancyhf{} 
-    \fancyhead[L]{\footnotesize BCIT ELEX 7790: Capstone Project Initiation} 
-    \fancyhead[R]{ANR: Short title and version \# goes here}
-    \fancyfoot[L]{filename} 
-    \fancyfoot[C]{\thispage of }
-    \fancyfoot[R]{\today} 
+    \fancyhead[L]{\footnotesize BCIT ELEX 7815: Digital Image \& Video Processing} 
+    \fancyhead[R]{Lab1: Image Manipulation}
+    \fancyfoot[C]{\thepage\hspace{1ex}of\hspace{1ex}\pageref{LastPage}}
 }
 
 \renewcommand{\footrulewidth}{1pt}
@@ -57,6 +57,16 @@
 \setlength{\headsep}{12pt}
 \setlength{\footskip}{32pt}
 
+
+% Matt's listing style
+\lstdefinestyle{mattLab}
+{
+    language=Matlab,
+    basicstyle=\small,
+    commentstyle=\color{ForestGreen},
+    keywordstyle={},
+}
+
 \begin{document} 
 
 \thispagestyle{titlePage}
@@ -78,7 +88,7 @@
     
     \vspace{12pt}
     
-    {\fontsize{16pt}{12pt}\fontfamily{qpl}\selectfont date}
+    {\fontsize{16pt}{12pt}\fontfamily{qpl}\selectfont Matthew Knight, \today}
     
     \vspace{24pt}
 
@@ -98,10 +108,14 @@
 
 \input{task2} 
 
-\input{task3} 
-
 \input{task4}
 
 \input{conclusion} 
+
+\pagebreak
+
+\appendix
+
+\input{appendix}
 
 \end{document}
