@@ -1,0 +1,18 @@
+
+ans = 
+
+           Filename: 'D:\Work\MattLab\lab1\barbara.jpg'
+        FileModDate: '18-Sep-2017 07:47:31'
+           FileSize: 10335
+             Format: 'jpg'
+      FormatVersion: ''
+              Width: 256
+             Height: 256
+           BitDepth: 8
+          ColorType: 'grayscale'
+    FormatSignature: ''
+    NumberOfSamples: 1
+       CodingMethod: 'Huffman'
+      CodingProcess: 'Sequential'
+            Comment: {[1x81 char]}
+
