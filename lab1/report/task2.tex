@@ -8,8 +8,8 @@ Now it's time to look at some color images. First we have fruits.png:
     \caption{Original fruits.png image}
 \end{figure}
 
-This image is a (mxnx3) image because it has three channels: Red, Green, and
-Blue. For example, if we look at pixel (93,180) we get a value of (r,g,b),
+This image is a (2834x2834x3) image because it has three channels: Red, Green, and
+Blue. For example, if we look at pixel (93,180) we get a value of (231,222,209),
 again, each value represents Red, Green, and Blue intensities. If we separate
 the image into its induvidual channels we get the following:
 
@@ -33,7 +33,7 @@ which points to an RGB value in the table.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{indexed}
-    \caption{256 and 16 indexed color image of fruits}
+    \caption{16 and 256 indexed color image of fruits (respectively)}
 \end{figure}
 
 If an image has many colors, the table can be made to be large to accomodate all

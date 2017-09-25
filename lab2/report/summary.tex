@@ -1,0 +1,48 @@
+\section{Summary}
+
+In this lab we covered several topics pertaining to point processing. Point
+processing is a method of image processing where pixels are translated, read,
+and altered.
+
+In one of our first exercizes we add a constant offset of 60 to an image. This
+increases the brightness of the image noticeably and it distorts it as well.
+While note completely obvious, we are losing information because some pixel
+values are, what we like to say, "hitting the rails" at the value 255. This is
+the maximum brightness and we cannot go beyond it. If we were given this value
+by itself, we would not be able to determine its original value precisely, and
+so information was lost.
+
+In another exercize we use a power law, or gamma transformation. I have
+previously read that gamma correction is an image acquisition technique that is
+used to correct brightness levels in an image taken by a camera to better match
+the image when the scene is seen by human eyes.
+
+Continuing with our exercize... The gamma transformation seems to essentially
+change brightness of the image. It is definitely not like a constant offset or
+linear expansion, it is able to do this without changing the bounds of the image
+and in doing so, loses little information.
+
+Logarithmic transformations are used when a large range of values exist, if we
+had a large range of values, say 16-bit, and most values were below 1000, then
+we could use a logarithmic transform to better see details throughout the
+brightness range. I can definitely see application for this type of transform in
+radiology, like when NASA publishes images of gas clouds. In the exercize we are
+using this transform on the tire image. At one point we are able to see radial
+lines on the tire. This happened because the difference between the original
+brightness of the lines vs. the background was very small. The logarithmic
+transform "zoomed in" on this range and increased the difference between the two
+enough that we were able to notice. It was not noticed earlier because the
+previous transforms simply did not "zoom in" on this range of value enough.
+
+We then have a piecewise function that "negates" a value if said value is below
+a threshold. The act of "negating" does have the effect of mirroring the value
+onto the other side of the possible value range. This is brought on by the fact
+that we are using unsigned 8-bit numbers and two's complement when using
+negative numbers. Let's say we have the value 1, which is very dark. If we turn
+it into -1, the 8-bit two's complement value is 11111111, the unsigned value of
+that is 255, the brightest value. Interesting this piecewise function will never
+alter a pixe with value 0.
+
+In our example, a threshold value of 0 does nothing, 255 gives us a negative of
+the image, and 100 only partially negates the image, making those parts much
+brighter.
