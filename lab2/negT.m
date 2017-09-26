@@ -1,4 +1,4 @@
-function I2 = neggaT(I1, T)
+function I2 = negT(I1, T)
 
 % Pixels in I1 are replaced by their negative value if they are below threshold
 % T. Otherwise they are left alone. I2 is the resultant image.
