@@ -95,7 +95,7 @@ subplot(2,2,4);
 imshow(s3);
 saveas(fig5, 'tire_gamma.png');
 
-% Gamma Transformation different gains
+% Log transform at different gains
 fig6 = figure;
 s1 = I;
 s2 = 2.*I;
@@ -108,13 +108,18 @@ subplot(2,2,3);
 imshow(s2);
 subplot(2,2,4);
 imshow(s3);
-saveas(fig6, 'tire_gamma_gain.png');
+saveas(fig6, 'tire_log.png');
 
 I = imread('peterrrrr.jpg');
 I = rgb2gray(I);
-dim = size(I);
-%for i = 1:size(I)(1)
-%    for j = 1:size(I)(2)
- %   print i;
- %   end
-%end
+I1 = negT(I, 0);
+I2 = negT(I, 255);
+I3 = negT(I, 100);
+
+fig7 = figure;
+
+saveas(fig7, 'piecewise');
+
+fig8 = figure;
+
+saveas(fig7, 'translation');
