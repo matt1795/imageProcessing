@@ -4,21 +4,23 @@ function val = interp(type, loc, mat)
 
 [m,n] = size(mat);
 
-x = loc(1); y = loc(2);
+x = double(loc(1)); y = double(loc(2));
 
 % if out of bounds
 if x < 1 || x > m
-    return 0;
+    val = 0;
+    return;
 end
 if y < 1 || y > n
-    return 0;
+    val = 0;
+    return;
 end
 
 p1 = floor(loc);
 p2 = ceil(loc);
 
-x1 = p1(1); y1 = p1(2);
-x2 = p2(1); y2 = p2(2);
+x1 = double(p1(1)); y1 = double(p1(2));
+x2 = double(p2(1)); y2 = double(p2(2));
 
 % process obtion
 if strcmp(type, '1d')
@@ -31,10 +33,10 @@ if strcmp(type, '1d')
 
     val = (vx + vy)/2;
     
-end else if strcmp(type, 'bilinear')
+elseif strcmp(type, 'bilinear')
     dx = [x2 - x, x - x1];
-    dy = [y2 - y, y - y1];
-    A = [   mat(x1,y1) mat(x1,y2);
-	    mat(x2,y1) mat(x2,y2)];
-    val = dx*A*dy;
+    dy = [y2 - y; y - y1];
+    A = [   double(mat(x1,y1)) double(mat(x1,y2));
+	    double(mat(x2,y1)) double(mat(x2,y2))];
+    val = uint8(dx*A*dy);
 end
