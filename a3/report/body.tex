@@ -6,6 +6,8 @@
     happens when you repeatedly apply an averaging filter to an image?}
 
     % Make script to generate image and apply filter.
+    
+    I made a script to apply the averaging filter:
 
     \begin{figure}[H]
 	\centering
@@ -13,17 +15,43 @@
 	\caption{Consecutive 3x3 Average Filter}
     \end{figure}
 
+    First I will comment on the dark border that appears, this comes up because
+    I used zero padding, and as this was only a 9x9 image, it made a significant
+    impact on the image.
+
+    As for the original image contents, as we perform the averaging filter the
+    single pixel in the center seems to disperse. If we were to continue
+    applying this filter, the dot would disappear and then the image would
+    completely turn black dues to the zero padding.
+
     \item \textbf{In Image shown here, each bar has a width of 6 pixels. The
     gaps between bars are 19 pixels. Explain the result of filtering this image
     using an averaging mask of 25x25 and 20x20}
 
     % Make script to generate image and apply filter.
 
+    I also made a script to  generate images for this case as well.
+
     \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{q2.png}
 	\caption{25x25 vs. 20x20 Average Filter}
     \end{figure}
+
+    First, there was zero padding and so you can see black seep in from the top
+    and bottom of the image.
+
+    The 25x25 filter is "resonant" with the image. Even as we move the filter
+    across the image, the value remains the same since 6 + 19 = 25. And so we
+    get a completely constant grey as a result. In the case of the 20x20 filter,
+    there is a point where there is a vast majority of white pixels, and so we
+    get a mostly white pixel as a result. As it moves further it reaches a
+    maximum number of black pixels, and will output a constant intensity until
+    the black bar leaves he frame. 
+
+    This example starts making me think about how frequency analysis in an image
+    could come about, and the affect of filter size on frequency
+    characteristics.
 
     \item \textbf{In spatial filtering, a mask is applied to top-left corner of
     an image and then the center of the mask will be moved through the image. At
