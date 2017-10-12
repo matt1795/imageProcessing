@@ -1,0 +1,163 @@
+\begin{enumerate}[font=\bfseries]
+
+    \item \textbf{An image has the PDF $p_r(r)=Ae^{-r}$. It is desired to
+    transform the intensity values of this image so that its PDF changes to
+    $p_z(z)=Bze^{-z^{2}}$. Assume continuous quantities and find the
+    transformation to perform this task.}
+    
+    \begin{align*}
+	p_r(r) &= Ae^{-r} \\
+	p_z(z) &= Bze^{-z^{2}} \\
+	s &= T(r) = G(z) \\
+	T(r) &= \int_{0}^{r}p_r(w)dw \\
+	&= A\int_{0}^{r}e^{-w}dw \\
+	&= A(1-e^{-r}) \\
+	G(z) &= \int_{0}^{z}p_z(t)dt \\
+	&= B\int_{0}^{z}ze^{-t^{2}}dt \\
+	&= \frac{B}{2}(1-e^{-z^{2}}) \\
+	T(r) &= G(z) \\
+	A(1-e^{-r}) &= \frac{B}{2}(1-e^{-z^{2}}) \\
+	e^{-z^{2}} &= 1 - \frac{2A}{B}(1-e^{-r}) \\
+	e^{z^{2}} &= \frac{1}{1 - \frac{2A}{B}(1-e^{-r})} \\
+	z^{2} &= \ln\left(\frac{1}{1 - \frac{2A}{B}(1-e^{-r})}\right) \\
+	z &= \sqrt{\ln\left(\frac{1}{1 - \frac{2A}{B}(1-e^{-r})}\right)}
+	\end{align*}
+    
+    \pagebreak 
+
+    \item \textbf{An image has the PDF shown below. It is desired to transform
+    the intensity values of this image so that its PDF becomes $p_z(z)$.
+    $p_z(z)$ is also shown below. Assume continuous quantities and find the
+    transformation to perform this task.}
+   
+    \begin{align*}
+	p_r(r) &= -2r + 2 \\
+	p_z(z) &= 2z \\
+	s &= T(r) = G(z) \\
+	T(r) &= \int_{0}^{r}p_r(w)dw \\
+	&= \int_{0}^{r}(-2w+2)dw \\
+	&= -r^{2} + 2r \\
+	G(z) &= \int_{0}^{z}p_z(t)dt \\
+	&= \int_{0}^{z}2tdt \\
+	&= z^{2} \\
+	G(z) &= T(r) \\
+	z^{2} &= -r^{2} + 2r \\
+	z &= \sqrt{r(2-r)}
+    \end{align*} 
+
+    \item \textbf{Why do histogram equalization of a digital image usually not
+    produce images with flat histograms?}
+
+    With digital images, all we really do is create a look up table and change
+    one intentsity value into another. If a bin within an image is very large,
+    we would naturally want to break it up in order to create a flat histogram,
+    but we cannot do this. How shall we decide which pixel of this value is
+    shifted to another bin? We cannot know this, atleast without other image
+    processing methods to aid in this endeavour. It is because this reality that
+    histogram equalization does not usually result in a perfectly flat
+    histogram.
+
+    \item \textbf{A 50x70 image has 3-bit pixels. Its histogram $H(r)$ looks
+    like a ramp as shown below. The counts in the histogram follow the formula
+    $H(r)=kr$, where $k$ is a constant.}
+
+    \begin{enumerate}[font=\bfseries, label=\alph*.]
+    
+	\item \textbf{Determine value of k.}
+	
+	\begin{align*}
+	    M \times N &= \sum_{r=0}^{7}kr \\
+	    k &= \frac{1}{M \times N}\cdot\sum_{r=0}^{7}r \\
+	    &= \frac{28}{50 \times 70} \\
+	    &= 125
+	\end{align*}
+
+	\item \textbf{Compute mean and standard deviation of this image from the
+	histogram.}
+
+	\begin{align*}
+	    \bar{x} &= \frac{1}{M \times N}\cdot\sum_{r=0}^{7}rH(r) \\
+	    &= \frac{1}{M \times N}\cdot\sum_{r=0}^{7}r^{2}k \\
+	    &= \frac{k}{M \times N}\cdot\sum_{r=0}^{7}r^{2} \\
+	    &= \frac{125}{50 \times 70}\cdot140 \\
+	    &= 5
+	\end{align*}
+
+	\begin{align*}
+	    s &= \sqrt{\frac{1}{N}\cdot\sum(x - \bar{x})^{2}} \\
+	    &= \sqrt{\frac{1}{M \times N}\cdot\sum_{r=0}^{7}rk(r -
+		\bar{x})^{2}}\\
+	    &= \sqrt{\frac{125}{50 \times 70}\cdot\sum_{r=0}^{7}r(r -
+		5)^{2}} \\
+	    &= \sqrt{3} \\
+	    &= 1.73
+	\end{align*}
+	
+	\item \textbf{Compute the transformation function $s=T(r)$ that will
+	equalize the histogram.}
+
+	\begin{align*}
+	    s_k = T(r_k) &= (L-1)\sum_{j=0}^{k}p_r(r_j) \\
+	    &= \frac{(L-1)}{M \times N}\sum_{j=0}^{k}H(r_j) \\
+	    &= \frac{(L-1)}{M \times N}\sum_{j=0}^{k}125j \\
+	    &= \frac{(L-1)125}{M \times N}\sum_{j=0}^{k}j \\
+	    &= \frac{(L-1)125}{M \times N}\cdot\frac{k(k+1)}{2} \\
+	    &= \frac{7\cdot125}{50 \times 70}\cdot\frac{k(k+1)}{2} \\
+	    &= 0.125\cdot k(k+1)
+	\end{align*}
+	
+	*Note: In this case I used a property of summation to simplify the above
+	relationship.
+
+	\item \textbf{Compute the histogram $H(s)$ of the resulting image if it
+	were transformed by $T$.}
+	
+	Tabulation of the histogram transformation:
+
+	\begin{table}[H]
+	    \centering
+	    \begin{tabular}{|c|c|c|c|c|} \hline
+	    $r_k$ & $n_k$ & $p_r(r_k)$ & $s_k$ & round($s_k$) \\ \hline
+	    0 & 0   & 0.000 & 0.00 & 0 \\ \hline
+	    1 & 125 & 0.036 & 0.25 & 0 \\ \hline
+	    2 & 250 & 0.071 & 0.75 & 1 \\ \hline
+	    3 & 375 & 0.107 & 1.50 & 2 \\ \hline
+	    4 & 500 & 0.143 & 2.50 & 3 \\ \hline
+	    5 & 625 & 0.179 & 3.75 & 4 \\ \hline
+	    6 & 750 & 0.214 & 5.00 & 5 \\ \hline
+	    7 & 875 & 0.250 & 7.00 & 7 \\ \hline
+	      & 3500 & & & \\ \hline
+	    \end{tabular}
+	\end{table}
+	
+	Resulting histogram:
+
+	\begin{table}[H]
+	    \centering
+	    \begin{tabular}{|c|c|} \hline
+	    $s_k$ & $n_k$ \\ \hline
+	    0 & 125  \\ \hline
+	    1 & 250  \\ \hline
+	    2 & 375  \\ \hline
+	    3 & 500  \\ \hline
+	    4 & 625  \\ \hline
+	    5 & 750  \\ \hline
+	    6 & 0    \\ \hline
+	    7 & 875  \\ \hline
+	      & 3500 \\ \hline
+	    \end{tabular}
+	\end{table}
+
+	\item \textbf{Compute the mean and standard deviation of the resulting
+	image.}
+	
+	The mean and standard deviation were calculated (on a spreadsheet) and
+	were found to be 4.25 and 2.18 respectively.
+
+	It is interesting to note that the mean of a perfectly flat histogram is
+	3.5 with a standard deviation of . When the image histogram is
+	equalized, it's mean and standard deviation approach these values.
+
+    \end{enumerate}
+
+\end{enumerate}
