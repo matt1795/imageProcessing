@@ -1,0 +1,66 @@
+\begin{enumerate}[font=\bfseries]
+
+    \item \textbf{For the image below (let’s call it image A), apply a 3x3
+    averaging low pass filter and call it image B. Apply the same averaging
+    filter to Image B to produce image C.  Draw image B and C. Explain what
+    happens when you repeatedly apply an averaging filter to an image?}
+
+    % Make script to generate image and apply filter.
+
+    \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.75]{q1.png}
+	\caption{Consecutive 3x3 Average Filter}
+    \end{figure}
+
+    \item \textbf{In Image shown here, each bar has a width of 6 pixels. The
+    gaps between bars are 19 pixels. Explain the result of filtering this image
+    using an averaging mask of 25x25 and 20x20}
+
+    % Make script to generate image and apply filter.
+
+    \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{q2.png}
+	\caption{25x25 vs. 20x20 Average Filter}
+    \end{figure}
+
+    \item \textbf{In spatial filtering, a mask is applied to top-left corner of
+    an image and then the center of the mask will be moved through the image. At
+    each location, the sum of product of the mask coefficients with the
+    corresponding pixel values at that location is calculated. Then the pixel
+    value of the image corresponding with the center of the mask will be
+    updated. Considering an averaging mask of size $n\times n$with coefficients
+    of $\frac{1}{n^2}$.  Calculate the minimum computational complexity of
+    applying the averaging filter to an image.  Remember that for an averaging
+    mask all the coefficients are one considering a scale factor of
+    $\frac{1}{n^2}$.}
+
+
+    \item \textbf{A digital image $f(x,y)$ is  changed to a  black and white
+    image $b(x,y)$.  $b(x,y)$ is passed through a 3x3 blurring filter as shown
+    here to produce output image $o(x,y)$. What are possible intensity values in
+    the output?}
+
+    It important to note that the sum of the coefficients is one. In the case
+    where all the pixel values are 255, the output would b 255. When all the
+    values are 0, the output is zero. This can be mapped to all values, and so
+    the possible values of the output are anywhere from 0 - 255.
+
+\end{enumerate}
+
+\pagebreak
+
+\appendix
+
+\section{Code Listings}
+
+\subsection{Script for Question 1}
+
+\lstinputlisting[style=mattLab]{../q1.m}
+
+\pagebreak
+
+\subsection{Script for Question 2}
+
+\lstinputlisting[style=mattLab]{../q2.m}
