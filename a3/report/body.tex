@@ -64,6 +64,13 @@
     mask all the coefficients are one considering a scale factor of
     $\frac{1}{n^2}$.}
 
+    A dot product of a 2 dimensional mask to an image is made up of
+    multiplication and addition operations. The operations required are simply
+    $n^2$ multiplies and $n^2 - 1$ additions.
+
+    In the case where N is a power of two, multiplication/division operation is
+    replaced by a bit shift, which significantly decreases the processing
+    requirements.
 
     \item \textbf{A digital image $f(x,y)$ is  changed to a  black and white
     image $b(x,y)$.  $b(x,y)$ is passed through a 3x3 blurring filter as shown
