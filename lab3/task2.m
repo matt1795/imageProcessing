@@ -8,43 +8,46 @@
 
 addpath('../images');
 
-name = ['barbara', 'Tire_gray', 'pout_gray', 'eight_gray'];
+name = ["barbara", "Tire_gray", "pout_gray", "eight_gray"];
 
 for i = 1:4
-    I = imread(name(i) + '.jpg');
+    I = imread(char(strcat(name(i) + ".png")));
     
     fig = figure;
-    title('My histogram vs. Matlab - ' + name(i));
-
     subplot(1,2,1);
-    plot(histogram(I));
-
+    stairs(transpose(histogram(I)));
+    xlim([0, 255]);
     subplot(1,2,2);
     imhist(I);
 
-    saveas(fig, name(i) + '_compare');
+    saveas(fig, char(strcat(name(i) + "_compare.png")));
 end
 
 % Make my own equalization function and show results
 
 for i = 2:3
-    I = imread(name(i) + '.jpg');
+    I = imread(char(strcat(name(i) + ".png")));
     I2 = equalize(I);
 
     fig = figure;
-    title('Histogram Equalization of ' + name(i));
 
     subplot(2,2,1);
     imshow(I);
+    title('Original');
 
     subplot(2,2,2);
-    histogram(I);
+    stairs(histogram(I));
+    title('Histogram of Original')
+    xlim([0, 255]);
 
     subplot(2,2,3);
     imshow(I2);
-
+    title('Equalized Image');
+    
     subplot(2,2,4);
-    histogram(I2);
+    stairs(histogram(I2));
+    title('Histogram After Equalization');
+    xlim([0, 255]);
 
-    saveas(fig, name(i) + '_equalize');
+    saveas(fig, char(strcat(name(i) + '_equalize.png')));
 end

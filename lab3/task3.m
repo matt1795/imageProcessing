@@ -8,7 +8,7 @@
 
 addpath('../images/');
 
-I1 = imread('tire_gray.png');
+I1 = imread('Tire_gray.png');
 I2 = imread('barbara.png');
 
 fig1 = figure;
@@ -17,7 +17,7 @@ imshow(I1);
 
 subplot(1,2,2);
 plot(histogram(I1));
-saveas('tire_hist');
+saveas(fig1,'tire_hist.png');
 
 fig2 = figure;
 subplot(1,2,1);
@@ -25,14 +25,14 @@ imshow(I2);
 
 subplot(1,2,2);
 plot(histogram(I2));
-saveas('barbara_hist');
+saveas(fig2,'barbara_hist.png');
+%%
+I3 = match(I1, I2);
+%%
+%fig2 = figure;
+%subplot(1,2,1);
+%imshow(I3);
 
-I3 = match(I2, I1);
-
-fig2 = figure;
-subplot(1,2,1);
-imshow(I3);
-
-subplot(1,2,2);
-plot(histogram(I3));
-saveas('match_hist');
+%subplot(1,2,2);
+%plot(histogram(I3));
+%saveas('match_hist');

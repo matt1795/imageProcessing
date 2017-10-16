@@ -2,9 +2,9 @@
 
 \subsection{Histograms}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{histogram_compare.png}
+    \includegraphics[scale=0.75]{histogram_compare.png}
     \caption{Histograms of Several Images}
 \end{figure}
 
@@ -17,5 +17,48 @@ concentration of intensity at high levels. Overall I expect tire to be the
 darkest image and eight to be the brightest.
 
 \subsection{Histogram Equalization}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{barbara_compare.png}
+    \caption{My histogram function vs. imhist of barbara}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{Tire_gray_compare.png}
+    \caption{My histogram function vs. imhist of Tire\_gray}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{pout_gray_compare.png}
+    \caption{My histogram function vs. imhist of pout\_gray}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{eight_gray_compare.png}
+    \caption{My histogram function vs. imhist of eight\_gray}
+\end{figure}
+
+First I've tested my histogram function on our images. While the Matlab function
+adds in some pretty plotting stuff, I have clearly scripted my function
+correctly. In some cases it seems that Matlab cuts off view of some intensities
+and in my plots you can see how many pixels there really are for a given
+intensity.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{pout_gray_equalize.png}
+    \caption{Histogram Equalization of pout}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.75]{Tire_gray_equalize.png}
+    \caption{Histogram Equalization of Tire}
+\end{figure}
 
 \subsection{Histogram Matching}
