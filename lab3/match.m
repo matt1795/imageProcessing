@@ -9,11 +9,16 @@
 
 function I3 = match(I1, I2)
 
-I3 = equalize(I1);
+% set up buffer for I3
+[m,n] = size(I1);
+I3 = zeros(m,n);
 
+% equalize I1
+I = equalize(I1);
+
+% now to figure out transform for I2 to equalization
 [m, n] = size(I2);
-
-p = histogram(I1)/(m1*n1);
+p = histogram(I2)/(m*n);
 s = zeros(1,256);
 s(1) = p(1);
 
@@ -24,31 +29,43 @@ for i = 1:256
 end
 
 s = round(s*255);
-T = zeros(1,256);
-count = 0;
+
+% Invert the I2 equalization transform
+
+
+T = NaN(1,256);
+
 for i = 1:256
-    if count < i
-        T(s(i)) = i-1;
+    if isnan(T(uint8(s(i) + 1)))
+        T(uint8(s(i)) + 1) = i -1;
     end
-    count = count + 1;
 end
+
+% interpolate for any NaNs
+for i = 1:256
+    if isnan(T(i))
+        p1 = i-1;
+        for j = i:256
+            if ~isnan(T(j))
+                p2 = j;
+                break;
+            end
+        end
+        T(i) = ((T(p2) - T(p1))/(p2-p1)) + T(i -1);
+    end
+end
+
+T = round(T);
+
+% Map equalized image to I2's histogram
+[m,n] = size(I3);
 
 for i = 1:m
     for j = 1:n
-        I3(i,j) = T(I1(i,j)+1);
+        I3(i,j) = T(I(i,j)+1);
     end
 end
+I3 = uint8(I3);
 
-% Test stuff
-s = [0 0 1 2 5 6 7 7];
-T = NaN(1,8);
-count = 0;
-
-for i = 1:8
-    if ~ISNAN(s(i))
-       T(uint8(s(i)) + 1) = i -1;
-        count = count + 1;
-    end
-end
 
         
