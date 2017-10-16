@@ -1,1 +1,27 @@
 \section{Summary}
+
+Histogram processing allows us to use some very nonlinear operations to do some
+useful things to images. We treat the histogram of images as the probability
+density of random variables. Doing so allows us to use the math behind
+transforming these density functions which is a powerful tool. 
+
+First we started with simply generating the histogram of an image. We compared
+how different images and their histograms in order to see the extra insight that
+histograms give us.
+
+Secondly, I developed a function to equalize image histograms. This is a very
+general and powerful operation which maximizes the contrast within an image. It
+can be used to easily improve old and faded images which were taken with old
+tech cameras which did not provide a full range of contrast. It can also be used
+to bring out detail within an image that is difficult to see.
+
+Lastly, I build a histogram matching function which uses the two preceding
+functions in this lab. I equalized an image, and calculated the transformation
+function to equalize the output, and inverted that second equalization. Then I
+mapped the equalized image to the histogram of the second image. This worked
+successfully and I managed to match tire to barbara.
+
+We only did our histogram processing on greyscale images. I am very interested
+in looking into how histogram processing could be used in color images. It
+initially looks like a good method to detect objects that may be the same color
+using thresholding.
