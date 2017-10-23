@@ -1,4 +1,4 @@
-% Task 2: formula �based image sampling
+% Task 2: formula based image sampling
 
 % Author: Matthew Knight
 % File Name: task2.m
