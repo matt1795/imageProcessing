@@ -1,4 +1,4 @@
-% Task 2: formula –based image sampling
+% Task 2: formula ï¿½based image sampling
 
 % Author: Matthew Knight
 % File Name: task2.m
@@ -22,13 +22,16 @@ I1 = imrotate(I1, ang);
 fig1 = figure;
 imshow(I1);
 title('Original');
+saveas(fig1, 'original_sine.png');
 
 % Down sample image and resize for different
 fig2 = figure;
 for i = 2:5
     I2 = I1(1:i:end, 1:i:end);
-    I2 = imresize(I2, [width, width]);
+    I2 = imresize(I2, [width, width], 'bicubic');
     subplot(2,2, i-1);
     imshow(I2);
-    title('M = ' + char(i));
+    title("M = " + i);
 end
+
+saveas(fig2, "sub_sample_sine.png");
