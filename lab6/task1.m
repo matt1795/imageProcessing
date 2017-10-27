@@ -26,6 +26,7 @@ title('5-bit Quantization');
 subplot(1,3,3);
 imshow(I3, [0 7]);
 title('3-bit Quantization');
+saveas(fig1, 'uniform_quanitizer.png');
 
 % SNR vs quantization bits
 
@@ -37,11 +38,36 @@ plot(B, SNR);
 title('SNR vs Quantization Resolution');
 xlabel('Quantization Resolution (bits)');
 ylabel('SNR (dB)');
+saveas(fig2, 'snr.png');
 
 % Compare barbara histogram to flat
+fig3 = figure;
+subplot(1,2,1);
+imshow(I1);
+subplot(1,2,2);
+imhist(I1);
+
+saveas(fig3, 'barb_not_uniform.png');
 
 % Find and plot the error due to quantization for 5 bpp
+fig4 = figure;
+I2 = bitshift(I2, 3);
+I4 = I1 - I2;
+imhist(I4);
+
 
 % Plot the input decision intervals versus the reconstruction levels 
 % for the uniform quantizer
+
+in = uint8(0:255);
+out = bitshift(in, -5);
+
+fig5 = figure;
+
+plot(in, out);
 grid on;
+title('8-bit to 3-bit Quantization');
+xlabel('Input Value');
+ylabel('Output Value');
+
+saveas(fig5, 'quatizer_transfer_function.png');
