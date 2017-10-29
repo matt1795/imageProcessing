@@ -1,1 +1,15 @@
 \section{Summary}
+
+In this lab we explore sub-sampling in two dimensions. We see that concepts from
+one dimension are not very different. For example, the closer the sample, the
+greater distance there is in spectral images. 
+
+There is a practical reason to keep samples far apart however, and that is to
+reduce the memory taken up by a single image. As we shrink an image,
+sub-sampling it, and then resize the image, there is an information loss, and
+the large sample interval brings spectral images close together, causing
+aliasing. Visualy this can look like very poor quality images, or distorted
+images. In one of our excercizes we have an image that has a single frequency
+and we sub-sample the image. By do so, and resizing the image for viewing, we
+bring all those spectral images together, and the aliasing causes the image to
+seem as if its rotating.

@@ -24,3 +24,12 @@ for i = 1:width
         end
     end
 end
+
+fig1 = figure;
+imshow(I1);
+
+saveas(fig1, 'checkered.png');
+
+s = [1 1; 1 -1];
+
+I2 = s *I1;
