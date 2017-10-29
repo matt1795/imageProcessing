@@ -1,7 +1,7 @@
 # Proposal makefile
 
 CC=pdflatex
-NAME=assignment2
+NAME=$(shell basename $(realpath ..))
 FLAGS= -output-directory build -jobname $(NAME) -file-line-error
 
 all: clean output
