@@ -1,0 +1,62 @@
+\begin{enumerate}[font=\bfseries]
+
+    \item \textbf{An image has defined as  $f(x,y) = \sin(2x + 3y)$, find the Fourier transform of
+    this image $F(u,v)$.}
+
+    \item \textbf{An image $f( x,y)$ is padded with zeros and the result is
+    called $g(x,y)$.  Explain the difference you think will appear in $F(u,v)$
+    and $G(u,v)$?}
+
+    The zero padding introduces sharp edges on all sides of the image so there
+    will be larger magnitudes at higher frequencies for both rows and columns.
+    The zero padding also decreases the average value of the image reducing the
+    DC portion of the rows and columns.
+
+    \item \textbf{Find the filter transfer function $H(u,v)$ for a filter that
+    averages the four immediate neighbors of a point $(x,y)$ , but does not
+    include $f(x,y)$?}
+
+    Given the description above, I can easily come up with a convolution matrix:
+    
+    \begin{equation*}
+	h(x,y) = \frac{1}{4} \times
+	\begin{bmatrix}
+	    0 & 1 & 0 \\
+	    1 & 0 & 1 \\
+	    0 & 1 & 0
+	\end{bmatrix}
+    \end{equation*}
+
+    This matrix is also known as the impulse response. In order to get the
+    frequenzy response, I can simple put it through a Z-Transform.
+
+    \item \textbf{A Gaussian low pass filter with $\sigma = 1$. Has the transfer
+    function of $H_{LP}(u,v) = Ae^{-\frac{(u^2 + v^2)}{2}}$.
+    Find $h_{LP}(x,y)$ and also $h_{HP}(x,y)$}
+
+    \item \textbf{Consider a 2D image $f(x,y) = \cos(4\pi x)\times \sin(8\pi y)$}
+
+    \begin{enumerate}[font=\bfseries, label=\alph*.]
+
+	\item \textbf{Determine its Fourier Transform, $F(u,v)$ and illustrate}
+
+	\item \textbf{suppose this signal is sampled uniformly with sampling
+	interval $\Delta x = \Delta y = \Delta = \frac{1}{6}$. Draw the spectrum
+	of the sampled signal}
+
+	\item \textbf{suppose the sampled signal is filtered by an ideal
+	low-pass filter $h_1(x,y)$ with frequency response:
+	\begin{equation*}
+	H_1(u,v) =
+	    \begin{cases}
+		\Delta^2 , -\frac{f_s}{2} \prec u, v \prec \frac{f_s}{2}\\
+		0, \hspace{1 em} \text{Otherwise}
+	    \end{cases}
+	\end{equation*}
+	Where, $f_s = \frac{1}{\Delta}$. Draw the spectrum of the
+	reconstructed signal .Give the spatial representation of the
+	reconstructed signal $f_{r1}(x,y)$}
+
+    \end{enumerate}
+
+\end{enumerate}
