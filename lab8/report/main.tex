@@ -13,8 +13,6 @@
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{lastpage}
 \usepackage{float}
-\usepackage{amsmath}
-\usepackage{enumitem}
 
 \graphicspath{ {../../images/}{../} }
 
@@ -28,8 +26,8 @@
 \fancypagestyle{neilReport}{ 
     \fancyhf{} 
     \fancyhead[L]{\footnotesize BCIT ELEX 7815: Digital Image \& Video Processing} 
-    \fancyhead[R]{\footnotesize Assignment 5}
-    \fancyfoot[C]{\footnotesize\thepage\hspace{1ex}of\hspace{1ex}\pageref{LastPage}}
+    \fancyhead[R]{\footnotesize Lab 8: DCT Transform}
+    \fancyfoot[C]{\footnotesize\thepage}
     \renewcommand{\footrulewidth}{0pt} 
 }
 
@@ -83,7 +81,12 @@
     
     \vspace{12pt}
     
-    {\fontsize{28pt}{12pt}\fontfamily{qpl}\selectfont\bfseries Assignment 5}
+    {\fontsize{28pt}{12pt}\fontfamily{qpl}\selectfont\bfseries Lab 8}
+    
+    \vspace{12pt}
+    
+    {\fontsize{26pt}{12pt}\fontfamily{qpl}\selectfont\bfseries\itshape DCT
+    Transform}
     
     \vspace{12pt}
     
@@ -97,11 +100,22 @@
 
 \pagestyle{neilReport}
 
-\input{body}
+\tableofcontents
 
 \pagebreak
-\appendix
+
+\input{summary}
+
+\pagebreak
+
+\input{results}
+
+\pagebreak
+
+\begin{appendix}
 
 \input{appendix}
+
+\end{appendix}
 
 \end{document}

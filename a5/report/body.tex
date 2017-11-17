@@ -26,11 +26,16 @@
 	\end{figure}
 
 	As you can see, we originally had all of our intensities at the minimum
-	and maximum intensity values. When we added noise, and not just wrote
-	noise to the image, the gaussian distribution is centered at the values
-	since there were no other intensity values to add noise to, that is why
-	we now have these two half normal distributions reaching for the center
-	of the intensity range.
+	and maximum intensity values. It may look like there are no bins showing
+	in the before image, but they are right at the edges since we have all
+	the intensities at black and white. When we added noise, most of our
+	pixels have a value of 0, so most of the noise is centered at 0.5 with
+	the assigned variance. As for the small number of white pixels, I assume
+	that the imnoise function wraps values above one to be within the range
+	of 0 to 1. It is very possible that it doesn't, however if we were
+	dealing with integer values and some sort of noise was added, the values
+	would simply overflow. In this case, our noise would wrap around and
+	still have an average value of 0.5.
     
     \end{enumerate}
 
@@ -76,9 +81,5 @@
     This results in pixels in the original image making sharp changes to a high
     value (salt) or a low value (pepper) every once in a while depending on the
     noise type.
-
-    Contra-harmonic filters are only effective at eliminating either salt or
-    pepper noise depending on the value of Q. When Q is positive
-
 
 \end{enumerate}
