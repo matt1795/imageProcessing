@@ -59,9 +59,13 @@
     the y axis.
 
     \item \textbf{Explain how contra harmonic operates if the area has constant
-    has constant values of P?}
+    values of P?}
 
-    
+    Assuming that "the area" is referencing the spatial filtering window, there
+    will be no change in the resulting pixel. First, if the contra harmonic is
+    set to behave as a mean filter, the average of a bunch of numbers that are P
+    results in the value P. As for the harmonic filer, the same applies. If you
+    calculate the result, the final value is P.
 
     \item \textbf{What is the difference between salt noise and pepper noise?
     Why are contra harmonic filters effective at eliminating salt noise when Q
