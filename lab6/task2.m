@@ -20,7 +20,7 @@ imshow(I1);
 subplot(1,3,2);
 imshow(I2, [0 15]);
 subplot(1,3,3);
-imshow(I4, [0 15]);
+imshow(I4, [0 15]);  
 
 saveas(fig1, 'dither_lena.png');
 
