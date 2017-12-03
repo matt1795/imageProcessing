@@ -23,7 +23,7 @@ for i=1:nfiles
     else
         prompt = 'Who dis?\n';
         str = input(prompt, 's');
-        
+        imwrite(imcrop(currentimage, bboxes), strcat(str, '.png'));
     end
     images{i} = currentimage;
 end
